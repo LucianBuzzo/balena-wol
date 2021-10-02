@@ -2,6 +2,8 @@
 
 Wake up your PC using a balena device!
 
+[![balena deploy button](https://www.balena.io/deploy.svg)](https://dashboard.balena-cloud.com/deploy?repoUrl=https://github.com/LucianBuzzo/balena-wol)
+
 ## Usage
 
 Install this app onto a balena device, then connect the device to your PC using an ethernet cable.
