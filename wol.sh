@@ -9,5 +9,13 @@ if [ -z "${MAC:-}" ]; then
   exit 1
 fi
 
-etherwake -i eth0 "$MAC"
+if ! [[ "$MAC" =~ ^([[:xdigit:]]{2}:){5}[[:xdigit:]]{2}$ ]]; then
+  echo "Error: MAC must be in format aa:bb:cc:dd:ee:ff" >&2
+  exit 1
+fi
+
+NET_IFACE="${NET_IFACE:-eth0}"
+
+echo "Sending WoL packet to $MAC via interface $NET_IFACE"
+etherwake -i "$NET_IFACE" "$MAC"
 tail -f /dev/null
